@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/07/2018 11:11:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="city.modelo.Log" table="log" catalog="cityzen" optimistic-lock="version">
+        <id name="idLog" type="java.lang.Integer">
+            <column name="idLog" />
+            <generator class="identity" />
+        </id>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" />
+        </property>
+        <property name="evento" type="string">
+            <column name="evento" length="250" />
+        </property>
+        <property name="detalle" type="string">
+            <column name="detalle" length="65535" />
+        </property>
+        <property name="ip" type="string">
+            <column name="ip" length="50" />
+        </property>
+        <property name="modeloDispositivo" type="string">
+            <column name="modelo_dispositivo" length="300" />
+        </property>
+    </class>
+</hibernate-mapping>

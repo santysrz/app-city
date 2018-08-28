@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/07/2018 11:11:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="city.modelo.Usuario" table="usuario" catalog="cityzen" optimistic-lock="version">
+        <id name="idUser" type="java.lang.Integer">
+            <column name="id_user" />
+            <generator class="identity" />
+        </id>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fecha_modificacion" length="19" />
+        </property>
+        <property name="identificacion" type="string">
+            <column name="identificacion" length="100" />
+        </property>
+        <property name="nombres" type="string">
+            <column name="nombres" length="250" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="250" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fecha_Nacimiento" length="10" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" length="2" />
+        </property>
+        <property name="mail" type="string">
+            <column name="mail" length="250" />
+        </property>
+        <property name="clave" type="string">
+            <column name="clave" length="100" />
+        </property>
+        <property name="usuarioActivo" type="string">
+            <column name="usuario_activo" length="2" />
+        </property>
+        <set name="activacions" table="activacion" inverse="true" lazy="true" fetch="join">
+            <key>
+                <column name="user_id" not-null="true" />
+            </key>
+            <one-to-many class="city.modelo.Activacion" />
+        </set>
+        <set name="incidencias" table="incidencia" inverse="true" lazy="true" fetch="join">
+            <key>
+                <column name="id_user" not-null="true" />
+            </key>
+            <one-to-many class="city.modelo.Incidencia" />
+        </set>
+    </class>
+</hibernate-mapping>

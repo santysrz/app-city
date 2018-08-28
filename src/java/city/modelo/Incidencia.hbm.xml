@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/07/2018 11:11:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="city.modelo.Incidencia" table="incidencia" catalog="cityzen" optimistic-lock="version">
+        <composite-id name="id" class="city.modelo.IncidenciaId">
+            <key-property name="idIncidencia" type="int">
+            <!--<key-property name="idIncidencia" type="java.lang.Integer">-->
+                <column name="idIncidencia" />
+                <!--<generator class="identity" />-->
+            </key-property>
+            <key-property name="idUser" type="int">
+                <column name="id_user" />
+            </key-property>
+            <key-property name="categoriaIncidencia" type="int">
+                <column name="categoria_incidencia" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="categorias" class="city.modelo.Categorias" update="false" insert="false" fetch="select">
+            <column name="categoria_incidencia" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="city.modelo.Usuario" update="false" insert="false" fetch="select">
+            <column name="id_user" not-null="true" />
+        </many-to-one>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fecha_modificacion" length="19" />
+        </property>
+        <property name="titulo" type="string">
+            <column name="titulo" length="250" />
+        </property>
+        <property name="multimedia" type="binary">
+            <column name="multimedia" />
+        </property>
+        <property name="latitud" type="string">
+            <column name="latitud" length="250" />
+        </property>
+        <property name="longitud" type="string">
+            <column name="longitud" length="250" />
+        </property>
+        <property name="barrioSector" type="string">
+            <column name="barrio_sector" length="250" />
+        </property>
+        <property name="descripcionAdicional" type="string">
+            <column name="descripcion_adicional" length="250" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="11" />
+        </property>
+        <property name="eliminado" type="string">
+            <column name="eliminado" length="3" />
+        </property>
+    </class>
+</hibernate-mapping>

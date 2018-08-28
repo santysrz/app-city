@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/07/2018 11:11:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="city.modelo.Categorias" table="categorias" catalog="cityzen" optimistic-lock="version">
+        <id name="idCategorias" type="java.lang.Integer">
+            <column name="idCategorias" />
+            <generator class="identity" />
+        </id>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19" />
+        </property>
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fecha_modificacion" length="19" />
+        </property>
+        <property name="nombreCategoria" type="string">
+            <column name="nombre_categoria" length="250" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="250" />
+        </property>
+        <set name="incidencias" table="incidencia" inverse="true" lazy="true" fetch="join">
+            <key>
+                <column name="categoria_incidencia" not-null="true" />
+            </key>
+            <one-to-many class="city.modelo.Incidencia" />
+        </set>
+    </class>
+</hibernate-mapping>

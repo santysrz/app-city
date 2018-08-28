@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/07/2018 11:11:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="city.modelo.Activacion" table="activacion" catalog="cityzen" optimistic-lock="version">
+        <composite-id name="id" class="city.modelo.ActivacionId">
+            <key-property name="idActivacion" type="int">
+                <column name="id_Activacion" />
+            </key-property>
+            <key-property name="userId" type="int">
+                <column name="user_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="usuario" class="city.modelo.Usuario" update="false" insert="false" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+        <property name="tokenActivacion" type="string">
+            <column name="token_activacion" length="250" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19" />
+        </property>
+        <property name="fechaCaducidad" type="timestamp">
+            <column name="fecha_caducidad" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>
